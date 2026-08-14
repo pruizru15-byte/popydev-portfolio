@@ -21,6 +21,7 @@ jobs:
           lftp -c "
           set ftp:ssl-force true;
           set ftp:ssl-protect-data true;
+          set ssl:verify-certificate no;
           open -p ${{ secrets.FTP_PORT }} -u '${{ secrets.FTP_USERNAME }}','${{ secrets.FTP_PASSWORD }}' ${{ secrets.FTP_SERVER }};
           mirror -R ./ / --exclude .git/ --exclude .github/ --exclude README.md --exclude .cpanel.yml --exclude .gitignore;
           "
