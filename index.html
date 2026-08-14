@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PopyDev - Portafolio profesional de desarrollo de software y soluciones digitales.">
+  <title>PopyDev | Portafolio</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a class="brand" href="#inicio">Popy<span>Dev</span></a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Ingeniería · Desarrollo · Automatización</p>
+          <h1>Construyo soluciones digitales que resuelven problemas reales.</h1>
+          <p class="hero-copy">
+            Desarrollo sistemas, aplicaciones web y automatizaciones con una visión orientada
+            a producto, rendimiento y crecimiento.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+            <a class="btn btn-secondary" href="#contacto">Contactar</a>
+          </div>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            Disponible para proyectos y oportunidades
+          </div>
+        </div>
+
+        <aside class="terminal-card" aria-label="Resumen técnico">
+          <div class="terminal-top">
+            <span></span><span></span><span></span>
+          </div>
+          <pre><code>$ whoami
+popydev
+
+$ focus
+software-engineering
+
+$ stack
+web · automation · data
+
+$ deploy
+git → cPanel → production
+
+$ status
+ready ✓</code></pre>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi">
+      <div class="container two-column">
+        <div>
+          <p class="section-label">Sobre mí</p>
+          <h2>Software con criterio técnico y propósito.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            PopyDev es mi espacio profesional para presentar proyectos, soluciones desarrolladas
+            y productos de software. El objetivo no es solamente mostrar código, sino demostrar
+            cómo una necesidad puede convertirse en una solución funcional.
+          </p>
+          <p>
+            Trabajo con desarrollo web, automatización, análisis de datos e integración de
+            tecnologías, priorizando arquitectura clara, mantenibilidad y una buena experiencia
+            para el usuario.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="proyectos">
+      <div class="container">
+        <p class="section-label">Proyectos</p>
+        <div class="section-heading">
+          <h2>Trabajo seleccionado</h2>
+          <p>Esta V1 queda preparada para que agreguemos tus proyectos reales progresivamente.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="card-number">01</span>
+            <h3>Sistema de Gestión</h3>
+            <p>Base para soluciones de ventas, inventario, clientes, usuarios y reportes.</p>
+            <div class="tags"><span>Web</span><span>Database</span><span>Business</span></div>
+          </article>
+
+          <article class="card">
+            <span class="card-number">02</span>
+            <h3>Automatizaciones</h3>
+            <p>Procesos diseñados para reducir trabajo manual y conectar servicios.</p>
+            <div class="tags"><span>Python</span><span>APIs</span><span>Automation</span></div>
+          </article>
+
+          <article class="card">
+            <span class="card-number">03</span>
+            <h3>Análisis de Datos</h3>
+            <p>Limpieza, transformación, análisis y presentación de información para decisiones.</p>
+            <div class="tags"><span>Data</span><span>Python</span><span>BI</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <p class="section-label">Servicios</p>
+        <div class="service-list">
+          <div class="service"><strong>01</strong><span>Desarrollo de sistemas web</span></div>
+          <div class="service"><strong>02</strong><span>Automatización de procesos</span></div>
+          <div class="service"><strong>03</strong><span>Integración de APIs y servicios</span></div>
+          <div class="service"><strong>04</strong><span>Análisis y tratamiento de datos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container contact-box">
+        <div>
+          <p class="section-label">Contacto</p>
+          <h2>¿Tienes una idea o necesitas un sistema?</h2>
+          <p>Conversemos sobre el problema y construyamos una solución adecuada.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:contacto@popydev.com">contacto@popydev.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>PopyDev</span>
+      <span>© <span id="year"></span> · Desplegado con Git + cPanel</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
