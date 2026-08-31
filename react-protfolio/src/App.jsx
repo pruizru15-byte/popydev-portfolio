@@ -1,6 +1,12 @@
 import React from 'react';
 import './App.css';
 
+// Import Logros Images explicitly to ensure Vite processes them correctly for both local and GitHub Pages
+import imgTitulo1 from '../public/Logros/titulodeingenierodesistemas.jpg';
+import imgTitulo2 from '../public/Logros/adversodeltitulo.jpg';
+import imgBachiller1 from '../public/Logros/BACHILLER_page-0001.jpg';
+import imgBachiller2 from '../public/Logros/BACHILLER_page-0002.jpg';
+
 // SVG Icons
 const Icons = {
   Logo: () => <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m2 22 10-20 10 20" /><path d="m6 14 12 0" /></svg>,
@@ -19,13 +25,15 @@ const Icons = {
   Briefcase: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>,
   Code: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
   Twitter: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>,
-  Frontend: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>,
-  Backend: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
+  Frontend: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" /></svg>,
+  Backend: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>,
   ChevronLeft: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>,
   ChevronRight: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>,
+  Sun: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>,
+  Moon: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>,
 };
 
-function Navbar() {
+function Navbar({ theme, toggleTheme }) {
   return (
     <nav className="navbar container">
       <div className="logo-container">
@@ -44,16 +52,21 @@ function Navbar() {
         <li><a href="#experience">Experiencia</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
-      <a href="/CV_Piero_Alexandro_Ruiz_Ruiz_Actualizado%20(1).pdf" target="_blank" rel="noreferrer" className="nav-btn">
-        Descargar CV <Icons.Download />
-      </a>
+      <div className="nav-right">
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Cambiar tema">
+          {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
+        </button>
+        <a href="/CV_Piero_Alexandro_Ruiz_Ruiz_Actualizado%20(1).pdf" target="_blank" rel="noreferrer" className="nav-btn">
+          Descargar CV <Icons.Download />
+        </a>
+      </div>
     </nav>
   );
 }
 
 function Hero() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
-  
+
   const slides = [
     {
       title: "Ingeniero de Sistemas",
@@ -95,94 +108,91 @@ function Hero() {
   }, [slides.length]);
 
   return (
-    <div className="dark-header">
-      <Navbar />
-      <section id="home" className="hero-content container">
-        <div className="hero-text">
-          <div className="availability-badge">
-            <span className="dot"></span> DISPONIBLE PARA NUEVOS PROYECTOS
-          </div>
-          
-          <div className="hero-carousel-text" style={{ display: 'grid' }}>
-            {slides.map((slide, i) => (
-              <div 
-                key={i}
-                style={{
-                  gridArea: '1 / 1 / 2 / 2',
-                  opacity: i === currentSlide ? 1 : 0,
-                  visibility: i === currentSlide ? 'visible' : 'hidden',
-                  transition: 'opacity 1.2s ease-in-out, visibility 1.2s ease-in-out',
-                  pointerEvents: i === currentSlide ? 'auto' : 'none',
-                }}
-              >
-                <h1>{slide.title} |<br />
-                  <span>
-                    {slide.subtitle.split('\n').map((line, idx) => (
-                      <React.Fragment key={idx}>{line}{idx === 0 && <br/>}</React.Fragment>
-                    ))}
-                  </span>
-                </h1>
-                <p>{slide.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="hero-actions">
-            <a href="#projects" className="btn-primary">Ver mis proyectos <Icons.ArrowRight /></a>
-            <a href="#contact" className="btn-secondary">Hablemos <Icons.Message /></a>
-          </div>
-
-          <div className="hero-social">
-            <a href="https://github.com/pruizru15-byte" target="_blank" rel="noreferrer"><Icons.Github /></a>
-            <a href="https://linkedin.com/in/piero-ruiz-ruiz-a487b52b7" target="_blank" rel="noreferrer"><Icons.Linkedin /></a>
-            <a href="mailto:pieroalexandro@gmail.com"><Icons.Mail /></a>
-          </div>
+    <section id="home" className="hero-content container">
+      <div className="hero-text">
+        <div className="availability-badge">
+          <span className="dot"></span> DISPONIBLE PARA NUEVOS PROYECTOS
         </div>
 
-        <div className="hero-image-container">
-          <div className="floating-widget widget-1">
-            <pre>
-              <code>
-                <span className="keyword">const</span> <span className="property">engineer</span> = {'{\n'}
-                {'  '}role: <span className="string">'Desarrollador'</span>,
-                {'\n  '}skills: [<span className="string">'Python'</span>, <span className="string">'JS'</span>, <span className="string">'React'</span>],
-                {'\n  '}focus: <span className="string">'Soluciones que impactan'</span>,
-                {'\n  '}passion: <span className="string">'Tecnología'</span>
-                {'\n}'};
-              </code>
-            </pre>
-          </div>
-          <div className="floating-widget widget-2">
-            <h4>System Performance</h4>
-            <div className="stat-row"><span>CPU</span><span>23%</span></div>
-            <div className="stat-bar"><div className="stat-fill" style={{ width: '23%' }}></div></div>
-            <br />
-            <div className="stat-row"><span>RAM</span><span>45%</span></div>
-            <div className="stat-bar"><div className="stat-fill" style={{ width: '45%' }}></div></div>
-          </div>
-          
-          <div className="hero-avatar-carousel" style={{ position: 'relative', width: '100%', height: '100%' }}>
-            {slides.map((slide, i) => (
-              <img 
-                key={i}
-                src={slide.img} 
-                alt="Piero Dev" 
-                className="hero-avatar"
-                style={{
-                  position: i === 0 ? 'relative' : 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  opacity: i === currentSlide ? 1 : 0,
-                  transition: 'opacity 1.2s ease-in-out'
-                }}
-              />
-            ))}
-          </div>
+        <div className="hero-carousel-text" style={{ display: 'grid' }}>
+          {slides.map((slide, i) => (
+            <div
+              key={i}
+              style={{
+                gridArea: '1 / 1 / 2 / 2',
+                opacity: i === currentSlide ? 1 : 0,
+                visibility: i === currentSlide ? 'visible' : 'hidden',
+                transition: 'opacity 1.2s ease-in-out, visibility 1.2s ease-in-out',
+                pointerEvents: i === currentSlide ? 'auto' : 'none',
+              }}
+            >
+              <h1>{slide.title} |<br />
+                <span>
+                  {slide.subtitle.split('\n').map((line, idx) => (
+                    <React.Fragment key={idx}>{line}{idx === 0 && <br />}</React.Fragment>
+                  ))}
+                </span>
+              </h1>
+              <p>{slide.desc}</p>
+            </div>
+          ))}
         </div>
-      </section>
-    </div>
+
+        <div className="hero-actions">
+          <a href="#projects" className="btn-primary">Ver mis proyectos <Icons.ArrowRight /></a>
+          <a href="#contact" className="btn-secondary">Hablemos <Icons.Message /></a>
+        </div>
+
+        <div className="hero-social">
+          <a href="https://github.com/pruizru15-byte" target="_blank" rel="noreferrer"><Icons.Github /></a>
+          <a href="https://linkedin.com/in/piero-ruiz-ruiz-a487b52b7" target="_blank" rel="noreferrer"><Icons.Linkedin /></a>
+          <a href="mailto:pieroalexandro@gmail.com"><Icons.Mail /></a>
+        </div>
+      </div>
+
+      <div className="hero-image-container">
+        <div className="floating-widget widget-1">
+          <pre>
+            <code>
+              <span className="keyword">const</span> <span className="property">engineer</span> = {'{\n'}
+              {'  '}role: <span className="string">'Desarrollador'</span>,
+              {'\n  '}skills: [<span className="string">'Python'</span>, <span className="string">'JS'</span>, <span className="string">'React'</span>],
+              {'\n  '}focus: <span className="string">'Soluciones que impactan'</span>,
+              {'\n  '}passion: <span className="string">'Tecnología'</span>
+              {'\n}'};
+            </code>
+          </pre>
+        </div>
+        <div className="floating-widget widget-2">
+          <h4>System Performance</h4>
+          <div className="stat-row"><span>CPU</span><span>23%</span></div>
+          <div className="stat-bar"><div className="stat-fill" style={{ width: '23%' }}></div></div>
+          <br />
+          <div className="stat-row"><span>RAM</span><span>45%</span></div>
+          <div className="stat-bar"><div className="stat-fill" style={{ width: '45%' }}></div></div>
+        </div>
+
+        <div className="hero-avatar-carousel" style={{ position: 'relative', width: '100%', height: '100%' }}>
+          {slides.map((slide, i) => (
+            <img
+              key={i}
+              src={slide.img}
+              alt="Piero Dev"
+              className="hero-avatar"
+              style={{
+                position: i === 0 ? 'relative' : 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                opacity: i === currentSlide ? 1 : 0,
+                transition: 'opacity 1.2s ease-in-out'
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -238,7 +248,7 @@ function Skills() {
 
 function ImageViewer({ src, onClose }) {
   const [zoomStyle, setZoomStyle] = React.useState({});
-  
+
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
@@ -260,9 +270,9 @@ function ImageViewer({ src, onClose }) {
     <div className="image-viewer-overlay" onClick={onClose}>
       <button className="viewer-close" onClick={onClose}>&times;</button>
       <div className="image-viewer-content" onClick={(e) => e.stopPropagation()}>
-        <img 
-          src={src} 
-          alt="Vista ampliada" 
+        <img
+          src={src}
+          alt="Vista ampliada"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={zoomStyle}
@@ -284,13 +294,13 @@ function Logros() {
       title: 'Título de Ingeniero de Sistemas',
       desc: 'Certificación oficial que acredita mi formación profesional y competencias en ingeniería de sistemas.',
       duration: 'Duración: 5 años',
-      images: ['/Logros/titulodeingenierodesistemas.jpg', '/Logros/adversodeltitulo.jpg']
+      images: [imgTitulo1, imgTitulo2]
     },
     {
       title: 'Grado Académico de Bachiller',
       desc: 'Grado obtenido tras completar el plan de estudios universitario con excelencia académica.',
       duration: 'Duración: 5 años',
-      images: ['/Logros/BACHILLER_page-0001.jpg', '/Logros/BACHILLER_page-0002.jpg']
+      images: [imgBachiller1, imgBachiller2]
     }
   ];
 
@@ -385,7 +395,7 @@ function Projects() {
           <button className="carousel-btn" onClick={() => scroll('right')}><Icons.ChevronRight /></button>
         </div>
       </div>
-      
+
       <div className="carousel-container" ref={scrollRef}>
         {projects.map((proj, i) => (
           <div key={i} className="carousel-card">
@@ -398,7 +408,7 @@ function Projects() {
           </div>
         ))}
       </div>
-      
+
       <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
         <a href="https://github.com/pruizru15-byte" target="_blank" rel="noreferrer" className="btn-secondary" style={{ display: 'inline-flex' }}>
           Visitar Perfil Completo de GitHub <Icons.Github />
@@ -585,9 +595,25 @@ function Footer() {
 }
 
 function App() {
+  const [theme, setTheme] = React.useState(() => {
+    return localStorage.getItem('theme') || 'light';
+  });
+
+  React.useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <div>
-      <Hero />
+      <div className="dark-header">
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <Hero />
+      </div>
       <About />
       <Skills />
       <Logros />
