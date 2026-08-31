@@ -19,6 +19,26 @@
   --font-family: 'Outfit', sans-serif;
 }
 
+/* --- Theming Overrides --- */
+[data-theme="dark"] {
+  --bg-light: #0a0f1d;
+  --bg-white: #111827;
+  
+  --text-dark: #f8fafc;
+  --text-muted-light: #94a3b8;
+  
+  --border-light: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  --bg-dark: #ffffff;
+  
+  --text-light: #0f172a;
+  --text-muted-dark: #64748b;
+  
+  --border-dark: rgba(0, 0, 0, 0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -35,6 +55,7 @@ body {
   color: var(--text-dark);
   overflow-x: hidden;
   line-height: 1.6;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1, h2, h3, h4 {
