@@ -103,18 +103,16 @@ function Hero() {
             <span className="dot"></span> DISPONIBLE PARA NUEVOS PROYECTOS
           </div>
           
-          <div className="hero-carousel-text" style={{ position: 'relative', minHeight: '280px' }}>
+          <div className="hero-carousel-text" style={{ display: 'grid' }}>
             {slides.map((slide, i) => (
               <div 
                 key={i}
                 style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
+                  gridArea: '1 / 1 / 2 / 2',
                   opacity: i === currentSlide ? 1 : 0,
                   visibility: i === currentSlide ? 'visible' : 'hidden',
                   transition: 'opacity 1.2s ease-in-out, visibility 1.2s ease-in-out',
+                  pointerEvents: i === currentSlide ? 'auto' : 'none',
                 }}
               >
                 <h1>{slide.title} |<br />
